@@ -15,9 +15,9 @@
 
 ## Capturas de pantalla
 
-<img src="public/images/pagina.png" width="350" alt="Página principal" />
-<img src="public/images/pensando.png" width="350" alt="Generando receta" />
-<img src="public/images/receta.png" width="350" alt="Receta generada" />
+<img src="./public/images/pagina.png" width="320" alt="Página principal" />
+<img src="./public/images/pensando.png" width="320" alt="Generando receta" />
+<img src="./public/images/receta.png" width="320" alt="Receta generada" />
 
 ---
 
