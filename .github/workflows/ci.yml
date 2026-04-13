@@ -1,0 +1,54 @@
+# Nombre del workflow — aparece en la pestaña "Actions" de GitHub
+name: CI
+
+# ¿Cuándo se ejecuta este workflow?
+on:
+  # Cada vez que se hace push a la rama main
+  push:
+    branches:
+      - main
+  # También cuando se abre o actualiza un Pull Request hacia main
+  pull_request:
+    branches:
+      - main
+
+# Los "jobs" son las tareas que va a ejecutar GitHub
+jobs:
+
+  # Este job se llama "build" — podría llamarse como se quiera..
+  build:
+    # GitHub va a usar una máquina virtual con Ubuntu (Linux) para correr todo
+    runs-on: ubuntu-latest
+
+    # Los "steps" son los pasos que se ejecutan uno a uno, en orden
+    steps:
+
+      # Paso 1: Descarga el código de tu repositorio en la máquina virtual
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      # Paso 2: Instala Node.js en la máquina virtual
+      # Usamos la versión 20 porque se supone que es la más estable
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          # Esto guarda en caché las dependencias para que la próxima vez sea más rápido
+          cache: 'npm'
+
+      # Paso 3: Instala las dependencias del proyecto (como hacer npm install)
+      # Usamos "ci" en vez de "install" porque es más estricto y seguro en pipelines
+      - name: Instalar dependencias
+        run: npm ci
+
+      # Paso 4: Ejecuta el linter para detectar errores de código
+      # Si hay errores de ESLint, el workflow falla aquí y te avisa
+      # Lint es un programa que lee tu código y busca errores o malas prácticas sin ejecutarlo
+      - name: Verificar calidad del código (lint)
+        run: npm run lint
+
+      # Paso 5: Intenta construir la aplicación para producción
+      # Si el build falla, significa que algo está roto y NO!!! debería llegar a producción
+      - name: Construir la aplicación
+        run: npm run build
+    
