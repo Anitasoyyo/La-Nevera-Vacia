@@ -25,12 +25,12 @@ jobs:
 
       # Paso 1: Descarga el código de tu repositorio en la máquina virtual
       - name: Descargar el código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Paso 2: Instala Node.js en la máquina virtual
       # Usamos la versión 20 porque se supone que es la más estable
       - name: Instalar Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
           # Esto guarda en caché las dependencias para que la próxima vez sea más rápido
