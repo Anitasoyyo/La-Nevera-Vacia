@@ -24,3 +24,6 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Documentación local (no se sube al repo)
+OPENCOMMIT.md
