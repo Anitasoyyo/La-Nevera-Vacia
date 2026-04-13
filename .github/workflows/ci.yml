@@ -48,7 +48,7 @@ jobs:
         run: npx tsc --noEmit
 
       # Paso 5: Intenta construir la aplicación para producción
-      # Si el build falla, significa que algo está roto y NO!!! debería llegar a producción
+      # Si el build falla, significa que algo está roto y NO debería llegar a producción
       - name: Construir la aplicación
         run: npm run build
     
