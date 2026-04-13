@@ -41,11 +41,11 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      # Paso 4: Ejecuta el linter para detectar errores de código
-      # Si hay errores de ESLint, el workflow falla aquí y te avisa
-      # Lint es un programa que lee tu código y busca errores o malas prácticas sin ejecutarlo
-      - name: Verificar calidad del código (lint)
-        run: npm run lint
+      # Paso 4: Verifica los tipos de TypeScript
+      # TypeScript comprueba que no estés usando variables o tipos incorrectos
+      # Usamos "tsc --noEmit" que verifica sin generar archivos de salida
+      - name: Verificar tipos de TypeScript
+        run: npx tsc --noEmit
 
       # Paso 5: Intenta construir la aplicación para producción
       # Si el build falla, significa que algo está roto y NO!!! debería llegar a producción
